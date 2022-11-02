@@ -1,10 +1,10 @@
 package com.example.demo.model;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.SequenceGenerator;
+import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.*;
+
+@Entity
 
 public class Faculty
 {
@@ -23,6 +23,15 @@ public class Faculty
 
     )
 
+
+
+    @ManyToMany
+    @JoinTable
+            (
+                    name="Student_like",
+                    joinColumns = @JoinColumn(name = "faculty_id"),
+                    inverseJoinColumns = @JoinColumn(name = "student_id"))
+    Set<Student>  likedStudents = new HashSet<>();
 
 
 

@@ -14,12 +14,13 @@ import java.util.List;
 @RestController
 public class FacultyController
 {
-    private final FacultyService facultyService;
-
     @Autowired
-    public FacultyController(FacultyService facultyService) {
+    FacultyService facultyService;
+
+  // @Autowired
+   /* public FacultyController(FacultyService facultyService) {
         this.facultyService = facultyService;
-    }
+    }*/
 
     @GetMapping(path = "api/v1/faculty")
     public List<Faculty> getFaculty() {
@@ -28,10 +29,10 @@ public class FacultyController
 
     @PostMapping(path = "api/v1/faculty")
     public void registerNewFaculty(@RequestBody Faculty faculty) {
-        FacultyService.addNewFaculty(faculty);
+        facultyService.addNewFaculty(faculty);
     }
 
-    @DeleteMapping(path="{facultyId}")
+    @DeleteMapping(path="faculty/{facultyId}")
     public void deleteFaculty(@PathVariable("facultyId") Long Id)
     {
         facultyService.deleteFaculty(Id);

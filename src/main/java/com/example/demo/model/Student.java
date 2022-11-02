@@ -4,6 +4,8 @@ import java.time.LocalDate;
 
 import javax.persistence.*;
 
+import java.util.*;
+
 @Entity
 @Table
 public class Student {
@@ -19,6 +21,9 @@ public class Student {
             generator = "student_sequence"
 
     )
+
+    @ManyToMany(mappedBy = "likedStudents")
+    Set<Faculty> likes ;
 
     private long id;
     private String name;

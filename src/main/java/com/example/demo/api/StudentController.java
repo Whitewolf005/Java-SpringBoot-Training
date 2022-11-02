@@ -12,12 +12,13 @@ import java.time.LocalDate;
 public class StudentController {
 
 
-    private final StudentService studentService;
-
     @Autowired
-    public StudentController(StudentService studentService) {
+    private StudentService studentService;
+
+    //@Autowired
+    /*public StudentController(StudentService studentService) {
         this.studentService = studentService;
-    }
+    }*/
 
     @GetMapping(path = "api/v1/student")
     public List<Student> getStudent() {
@@ -29,7 +30,7 @@ public class StudentController {
         StudentService.addNewStudent(student);
     }
 
-    @DeleteMapping(path="{studentId}")
+    @DeleteMapping(path="student/{studentId}")
     public void deleteStudent(@PathVariable("studentId") Long Id)
     {
        studentService.deleteStudent(Id);

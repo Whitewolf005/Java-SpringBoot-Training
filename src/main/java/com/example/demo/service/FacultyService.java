@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 
+import com.example.demo.api.FacultyController;
 import com.example.demo.dao.FacultyRepository;
 
 import com.example.demo.model.Faculty;
@@ -18,13 +19,14 @@ public class FacultyService
 {
     private static FacultyRepository facultyRepository = null;
 
-    @Autowired
+
+    //FacultyRepository facultyRepository;
     public FacultyService(FacultyRepository facultyRepository) {
         this.facultyRepository = facultyRepository;
     }
 
-    public static void addNewFaculty(Faculty faculty) {
-        Optional<Faculty> facultyOptional = facultyRepository.findFacultyByEmail(faculty.getEmail());
+    public void addNewFaculty(Faculty faculty) {
+        Optional<Faculty> facultyOptional = facultyRepository.findByEmail(faculty.getEmail());
 
         if (facultyOptional.isPresent()) {
             throw new IllegalStateException("Email Already Taken..");
@@ -59,7 +61,7 @@ public class FacultyService
         }
         if(email != null && email.length()>1 && !Objects.equals(faculty.getEmail(),email))
         {
-            Optional<Faculty> facultyOptional = facultyRepository.findFacultyByEmail(email);
+            Optional<Faculty> facultyOptional = facultyRepository.findByEmail(email);
             if(facultyOptional.isPresent())
             {
                 throw new IllegalStateException("Email Already Taken");
