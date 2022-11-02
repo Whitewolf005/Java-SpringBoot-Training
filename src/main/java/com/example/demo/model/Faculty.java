@@ -23,7 +23,14 @@ public class Faculty
 
     )
 
+    private long id;
 
+
+    private String name;
+    private String email;
+    private LocalDate dob;
+    private int age;
+    private String subject;
 
     @ManyToMany
     @JoinTable
@@ -32,15 +39,6 @@ public class Faculty
                     joinColumns = @JoinColumn(name = "faculty_id"),
                     inverseJoinColumns = @JoinColumn(name = "student_id"))
     Set<Student>  likedStudents = new HashSet<>();
-
-
-
-    private long id;
-    private String name;
-    private String email;
-    private LocalDate dob;
-    private int age;
-    private String subject;
 
     public Faculty() {
 

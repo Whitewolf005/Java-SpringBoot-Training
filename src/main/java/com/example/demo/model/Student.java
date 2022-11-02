@@ -22,8 +22,7 @@ public class Student {
 
     )
 
-    @ManyToMany(mappedBy = "likedStudents")
-    Set<Faculty> likes ;
+
 
     private long id;
     private String name;
@@ -31,6 +30,8 @@ public class Student {
     private LocalDate dob;
     private int age;
 
+    @ManyToMany(mappedBy = "likedStudents")
+    Set<Faculty> likes ;
     public Student(){
     }
 
