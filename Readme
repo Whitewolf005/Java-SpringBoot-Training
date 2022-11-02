@@ -1,1 +1,13 @@
+This project is developed on SpringBoot Framework
 
+Maven plugin is used to run spring boot application, generate build information, solve dependencies etc.
+
+The project Contains 2 Entity as of now 1) Student 2) Faculty
+
+The relationshhip between these two entities is Many to Many
+This relationship is established with the idea that one student can have many faculties and one faculty can have one many students 
+
+The Database used in this project is postgres
+This project includes two tables Student and Faculty
+
+Postman is used for testing various API's on this project like PUT,POST,GET,DElETE
