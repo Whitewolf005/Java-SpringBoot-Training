@@ -32,13 +32,16 @@ public class Faculty
     private int age;
     private String subject;
 
-    @ManyToMany
+    @ManyToMany()
     @JoinTable
             (
                     name="Student_like",
                     joinColumns = @JoinColumn(name = "faculty_id"),
                     inverseJoinColumns = @JoinColumn(name = "student_id"))
     Set<Student>  likedStudents = new HashSet<>();
+
+    @OneToMany(mappedBy = "faculty")
+    Set<Result> ress1;
 
     public Faculty() {
 
@@ -107,6 +110,22 @@ public class Faculty
 
     public void setSubject(String subject) {
         this.subject = subject;
+    }
+
+    public Set<Student> getLikedStudents() {
+        return likedStudents;
+    }
+
+    public void setLikedStudents(Set<Student> likedStudents) {
+        this.likedStudents = likedStudents;
+    }
+
+    public Set<Result> getRess1() {
+        return ress1;
+    }
+
+    public void setRess1(Set<Result> ress1) {
+        this.ress1 = ress1;
     }
 
     @Override

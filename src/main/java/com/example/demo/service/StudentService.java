@@ -15,18 +15,26 @@ import java.util.Optional;
 @Service
 public class StudentService {
 
-    private static StudentRepository studentRepository = null;
-
     @Autowired
-    public StudentService(StudentRepository studentRepository) {
+    private static StudentRepository studentRepository ;
+
+
+    /*public StudentService(StudentRepository studentRepository) {
         this.studentRepository = studentRepository;
-    }
+    }*/
 
 
 
     public List<Student> getStudents() {
 
-        return studentRepository.findAll();
+
+        List<Student> f=studentRepository.findAll();
+        System.out.println("Hello...");
+        for (Student s:f
+             ) {
+            System.out.println(s);
+        }
+        return f;
     }
 
 

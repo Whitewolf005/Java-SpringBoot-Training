@@ -17,13 +17,14 @@ import java.util.Optional;
 @Service
 public class FacultyService
 {
-    private static FacultyRepository facultyRepository = null;
+    @Autowired
+    private FacultyRepository facultyRepository;
 
 
     //FacultyRepository facultyRepository;
-    public FacultyService(FacultyRepository facultyRepository) {
+   /* public FacultyService(FacultyRepository facultyRepository) {
         this.facultyRepository = facultyRepository;
-    }
+    }*/
 
     public void addNewFaculty(Faculty faculty) {
         Optional<Faculty> facultyOptional = facultyRepository.findByEmail(faculty.getEmail());
@@ -36,7 +37,14 @@ public class FacultyService
 
     public List<Faculty> getFaculty() {
 
-        return facultyRepository.findAll();
+        System.out.println("Hello1");
+        List<Faculty> s= facultyRepository.findAll();
+        for (Faculty f1: s
+             ) {
+            System.out.println(f1);
+        }
+        return s;
+
     }
 
     public void deleteFaculty(Long facultyId) {

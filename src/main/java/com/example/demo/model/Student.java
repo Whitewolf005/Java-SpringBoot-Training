@@ -32,6 +32,9 @@ public class Student {
 
     @ManyToMany(mappedBy = "likedStudents")
     Set<Faculty> likes ;
+
+    @OneToMany(mappedBy = "student")
+    Set<Result> ress;
     public Student(){
     }
 
@@ -88,6 +91,22 @@ public class Student {
 
     public void setAge(int age) {
         this.age = age;
+    }
+
+    public Set<Faculty> getLikes() {
+        return likes;
+    }
+
+    public void setLikes(Set<Faculty> likes) {
+        this.likes = likes;
+    }
+
+    public Set<Result> getRes() {
+        return ress;
+    }
+
+    public void setRes(Set<Result> res) {
+        this.ress = res;
     }
 
     @Override

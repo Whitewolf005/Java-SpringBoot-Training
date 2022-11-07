@@ -15,7 +15,7 @@ import java.util.List;
 public class FacultyController
 {
     @Autowired
-    FacultyService facultyService;
+    private FacultyService facultyService;
 
   // @Autowired
    /* public FacultyController(FacultyService facultyService) {
@@ -24,6 +24,8 @@ public class FacultyController
 
     @GetMapping(path = "api/v1/faculty")
     public List<Faculty> getFaculty() {
+
+        System.out.println("Hello");
         return facultyService.getFaculty();
     }
 
