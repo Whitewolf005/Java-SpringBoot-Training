@@ -1,5 +1,8 @@
 package com.example.demo.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import java.time.LocalDate;
 
 import javax.persistence.*;
@@ -30,9 +33,11 @@ public class Student {
     private LocalDate dob;
     private int age;
 
+    @JsonManagedReference
     @ManyToMany(mappedBy = "likedStudents")
     Set<Faculty> likes ;
 
+    @JsonManagedReference
     @OneToMany(mappedBy = "student")
     Set<Result> ress;
     public Student(){
@@ -92,6 +97,7 @@ public class Student {
     public void setAge(int age) {
         this.age = age;
     }
+
 
     public Set<Faculty> getLikes() {
         return likes;

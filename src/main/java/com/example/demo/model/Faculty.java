@@ -1,5 +1,9 @@
 package com.example.demo.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.*;
@@ -32,6 +36,7 @@ public class Faculty
     private int age;
     private String subject;
 
+    @JsonBackReference
     @ManyToMany()
     @JoinTable
             (
@@ -40,6 +45,7 @@ public class Faculty
                     inverseJoinColumns = @JoinColumn(name = "student_id"))
     Set<Student>  likedStudents = new HashSet<>();
 
+    @JsonManagedReference
     @OneToMany(mappedBy = "faculty")
     Set<Result> ress1;
 
@@ -111,6 +117,7 @@ public class Faculty
     public void setSubject(String subject) {
         this.subject = subject;
     }
+
 
     public Set<Student> getLikedStudents() {
         return likedStudents;

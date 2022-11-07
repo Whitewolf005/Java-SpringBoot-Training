@@ -1,6 +1,8 @@
 package com.example.demo.model;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 
 @Entity
@@ -23,6 +25,7 @@ public class Result
 
 
     private long id;
+    @JsonBackReference
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 
     @JoinColumn(name="Stu_ID")
@@ -31,6 +34,7 @@ public class Result
     private Student student;
     //private long id;
 
+    @JsonBackReference
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name="Fac_ID")
 
