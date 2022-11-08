@@ -6,8 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.time.LocalDate;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -18,7 +16,7 @@ public class StudentService {
 
 
       @Autowired
-      private static StudentRepository studentRepository ;
+      public static StudentRepository studentRepository ;
 
 
 
@@ -32,34 +30,45 @@ public class StudentService {
 
 
         List<Student> f=studentRepository.findAll();
-        System.out.println("Hello...");
+        /*System.out.println("Hello...");
         for (Student s:f
              ) {
             System.out.println(s);
-        }
+        }*/
         return f;
     }
 
 
-    public static void addNewStudent(Student student) {
+    public static boolean addNewStudent(Student student) {
         Optional<Student> studentOptional = studentRepository.findStudentByEmail(student.getEmail());
 
         if (studentOptional.isPresent()) {
             throw new IllegalStateException("Email Already Taken..");
         }
         studentRepository.save(student);
+        return true;
+
     }
 
 
 
-    public void deleteStudent(Long studentId) {
+    public boolean deleteStudent(Long studentId) {
+
+
         boolean check = studentRepository.existsById(studentId);
-        if (!check) {
+        System.out.println(check);
+         //Optional s= studentRepository.findById(studentId);
+        System.out.println(studentId);
+        System.out.println(studentRepository.existsById(Long.valueOf(1)));
+        System.out.println(studentRepository.findAll());
+        /*if (!check) {
             throw new IllegalStateException("Student with Id " + studentId + " doesn't exist");
 
 
-        }
+        }*/
+
         studentRepository.deleteById(studentId);
+        return true;
     }
 
     @Transactional
