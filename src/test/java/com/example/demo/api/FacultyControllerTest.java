@@ -68,19 +68,7 @@ class FacultyControllerTest {
                 .andExpect(MockMvcResultMatchers.status().isOk());
     }
 
-    /**
-     * Method under test: {@link FacultyController#updateFaculty(Long, String, String)}
-     */
-    @Test
-    void testUpdateFaculty2() throws Exception {
-        doNothing().when(facultyService).updateFaculty((Long) any(), (String) any(), (String) any());
-        MockHttpServletRequestBuilder putResult = MockMvcRequestBuilders.put("/api/v1/faculty/{facultyId}", 123L);
-        putResult.characterEncoding("Encoding");
-        MockMvcBuilders.standaloneSetup(facultyController)
-                .build()
-                .perform(putResult)
-                .andExpect(MockMvcResultMatchers.status().isOk());
-    }
+
 
 
     @Test
