@@ -135,7 +135,7 @@ public class Faculty
         this.ress1 = ress1;
     }
 
-    @Override
+   /* @Override
     public String toString() {
         return "Faculty{" +
                 "id=" + id +
@@ -145,5 +145,5 @@ public class Faculty
                 ", age=" + age +
                 ", subject='" + subject + '\'' +
                 '}';
-    }
+    }*/
 }

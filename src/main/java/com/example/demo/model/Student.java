@@ -115,7 +115,7 @@ public class Student {
         this.ress = res;
     }
 
-    @Override
+    /*@Override
     public String toString() {
         return "Student{" +
                 "id=" + id +
@@ -124,5 +124,5 @@ public class Student {
                 ", dob=" + dob +
                 ", age=" + age +
                 '}';
-    }
+    }*/
 }

@@ -35,16 +35,21 @@ public class StudentService {
              ) {
             System.out.println(s);
         }*/
+
         return f;
     }
 
 
     public static boolean addNewStudent(Student student) {
-        Optional<Student> studentOptional = studentRepository.findStudentByEmail(student.getEmail());
+       boolean studentOptional = studentRepository.findStudentByEmail(student.getEmail());
 
-        if (studentOptional.isPresent()) {
+        //System.out.println(studentOptional);
+       // System.out.println(studentRepository.findAll());
+        if (studentOptional) {
             throw new IllegalStateException("Email Already Taken..");
         }
+        if(student.getName().isEmpty())
+            return false;
         studentRepository.save(student);
         return true;
 
@@ -56,18 +61,18 @@ public class StudentService {
 
 
         boolean check = studentRepository.existsById(studentId);
-        System.out.println(check);
+        //System.out.println(check);
          //Optional s= studentRepository.findById(studentId);
-        System.out.println(studentId);
-        System.out.println(studentRepository.existsById(Long.valueOf(1)));
-        System.out.println(studentRepository.findAll());
-        /*if (!check) {
+      //  System.out.println(studentId);
+       // System.out.println(studentRepository.findAll());
+        if (!check) {
             throw new IllegalStateException("Student with Id " + studentId + " doesn't exist");
 
 
-        }*/
+        }
 
         studentRepository.deleteById(studentId);
+      // System.out.println(studentRepository.findAll());
         return true;
     }
 
@@ -83,12 +88,12 @@ public class StudentService {
        }
         if(email != null && email.length()>1 && !Objects.equals(student.getEmail(),email))
         {
-            Optional<Student> studentOptional = studentRepository.findStudentByEmail(email);
-            if(studentOptional.isPresent())
+            boolean studentOptional = studentRepository.findStudentByEmail(email);
+            if(studentOptional)
             {
                 throw new IllegalStateException("Email Already Taken");
             }
-            student.setName(email);
+            student.setEmail(email);
         }
     }
 }

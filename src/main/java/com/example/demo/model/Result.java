@@ -102,12 +102,12 @@ public class Result
         this.faculty = faculty;
     }
 
-    @Override
+   /* @Override
     public String toString() {
         return "Result{" +
                 ", name='" + name + '\'' +
                 ", subject='" + subject + '\'' +
                 ", marks=" + marks +
                 '}';
-    }
+    }*/
 }

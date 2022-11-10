@@ -25,7 +25,7 @@ public class FacultyController
     @GetMapping(path = "api/v1/faculty")
     public List<Faculty> getFaculty() {
 
-        System.out.println("Hello");
+
         return facultyService.getFaculty();
     }
 
