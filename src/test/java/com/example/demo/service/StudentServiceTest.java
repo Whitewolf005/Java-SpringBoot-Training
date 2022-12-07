@@ -135,7 +135,7 @@ public class StudentServiceTest {
 
     @Test
     void testDeleteStudent() {
-        Mockito.when(studentRepository.findAll()).thenReturn(students);
+        //Mockito.when(studentRepository.findAll()).thenReturn(students);
 
         doNothing().when(studentRepository).deleteById(s.getId());
         when(studentRepository.existsById((Long) any())).thenReturn(true);
